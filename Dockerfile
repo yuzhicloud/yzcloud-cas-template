@@ -1,8 +1,9 @@
-ARG BASE_IMAGE="eclipse-temurin:11-jdk"
-ARG EXT_BUILD_COMMANDS=""
-ARG EXT_BUILD_OPTIONS=""
+ARG BASE_IMAGE="azul/zulu-openjdk:21"
 
 FROM $BASE_IMAGE AS overlay
+
+ARG EXT_BUILD_COMMANDS=""
+ARG EXT_BUILD_OPTIONS=""
 
 RUN mkdir -p cas-overlay
 COPY ./src cas-overlay/src/

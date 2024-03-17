@@ -7,8 +7,8 @@ WAR Overlay Type: `cas-overlay`
 # Versions
    
 
-- CAS Server `6.6.15`
-- JDK `11`
+- CAS Server `7.1.0-SNAPSHOT`
+- JDK `21`
                      
 # Build
 
@@ -87,6 +87,18 @@ Or via:
 ```bash
 ./gradlew[.bat] run
 ```
+
+It is often an advantage to explode the generated web application and run it in unpacked mode.
+One way to run an unpacked archive is by starting the appropriate launcher, as follows:
+
+```bash
+jar -xf build/libs/cas.war
+cd build/libs
+java org.springframework.boot.loader.launch.JarLauncher
+```
+
+This is slightly faster on startup (depending on the size of the WAR file) than
+running from an unexploded archive. After startup, you should not expect any differences.
 
 Debug the CAS web application as an executable WAR:
 
