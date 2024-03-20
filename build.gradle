@@ -220,8 +220,8 @@ tasks.register("casBuildDockerImage", DockerBuildImage) {
 
     def imageTag = "${project.'cas.version'}"
     inputDir = project.projectDir
-    images.add("apereo/cas:${imageTag}${imageTagPostFix}")
-    images.add("apereo/cas:latest${imageTagPostFix}")
+    images.add("hotjava/cas:${imageTag}${imageTagPostFix}")
+    images.add("hotjava/cas:latest${imageTagPostFix}")
     if (dockerUsername != null && dockerPassword != null) {
         username = dockerUsername
         password = dockerPassword
@@ -236,8 +236,8 @@ tasks.register("casPushDockerImage", DockerPushImage) {
     dependsOn("casBuildDockerImage")
 
     def imageTag = "${project.'cas.version'}"
-    images.add("apereo/cas:${imageTag}${imageTagPostFix}")
-    images.add("apereo/cas:latest${imageTagPostFix}")
+    images.add("hotjava/cas:${imageTag}${imageTagPostFix}")
+    images.add("hotjava/cas:latest${imageTagPostFix}")
 
     if (dockerUsername != null && dockerPassword != null) {
         username = dockerUsername
@@ -261,6 +261,15 @@ dependencies {
      **/
     implementation "org.apereo.cas:cas-server-core-api-configuration-model"
     implementation "org.apereo.cas:cas-server-webapp-init"
+    implementation "org.apereo.cas:cas-server-support-oidc"
+    implementation "org.apereo.cas:cas-server-support-oidc-jpa"
+    implementation "org.apereo.cas:cas-server-support-rest"
+    implementation "org.apereo.cas:cas-server-support-jdbc"
+    implementation "org.apereo.cas:cas-server-support-json-service-registry"
+    implementation "org.apereo.cas:cas-server-support-jpa-hibernate"
+    implementation "org.apereo.cas:cas-server-support-palantir"
+    implementation "org.apereo.cas:cas-server-support-jpa-util"
+
 
     if (project.hasProperty("appServer")) {
         implementation "org.apereo.cas:cas-server-webapp-init${project.appServer}"
